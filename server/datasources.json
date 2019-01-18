@@ -1,0 +1,40 @@
+{
+  "mydata": {
+    "name": "mydata",
+    "baseURL": "",
+    "crud": true,
+    "connector": "rest",
+    "debug" : false,
+    "options":{
+      "headers": {
+        "accepts": "application/json",
+        "content-type": "application/json"
+      },
+      "stictSSL": false
+    },
+    "operations":[
+      {
+        "template":{
+          "method" : "GET",
+          "url" : "http://localhost:3001/accountsService/",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query":{
+            "username":"{username}",
+            "token": "{token}"
+          },
+          "options": {
+            "strictSSL": true,
+            "useQuerystring": true
+          },
+          "responsePath" :"$.results"
+        },
+        "functions": {
+          "balance":["username","token"]
+        }
+      }
+    ]
+  }
+}
